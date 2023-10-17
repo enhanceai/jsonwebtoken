@@ -64,6 +64,10 @@ pub struct Header {
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(rename = "x5t#S256")]
     pub x5t_s256: Option<String>,
+
+    /// 智谱的自定义字段，其他请勿使用， TODO: 使用 trait 或者 enum 来区分不同 header
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sign_type: Option<String>,
 }
 
 impl Header {
@@ -80,6 +84,7 @@ impl Header {
             x5c: None,
             x5t: None,
             x5t_s256: None,
+            sign_type: None,
         }
     }
 
